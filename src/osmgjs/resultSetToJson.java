@@ -8,10 +8,10 @@ public class resultSetToJson {
 	public static JSONArray jsonConvert(ResultSet rs) throws SQLException, JSONException{
 	    JSONArray json = new JSONArray();
 	    ResultSetMetaData rsmd = rs.getMetaData();
-
+	    int numColumns = rsmd.getColumnCount();
+	    JSONObject obj;
 	    while(rs.next()) {
-	      int numColumns = rsmd.getColumnCount();
-	      JSONObject obj = new JSONObject();
+	      obj = new JSONObject();
 
 	      for (int i=1; i<numColumns+1; i++) {
 	        String column_name = rsmd.getColumnName(i);
