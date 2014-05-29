@@ -13,5 +13,6 @@
 			<attribute name="owner.project.facets" value="java"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/bpmdev/workspace/osmgjs/java-json.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

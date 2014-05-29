@@ -859,7 +859,7 @@
 		</script>
 	</head>
 	<body>
-		 <table id="split" class="table table-striped table-bordered table-condensed">
+		 <table id="split" border-spacing="5em" class="table table-striped table-bordered table-condensed">
 			<thead></thead>
 			<tbody></tbody>
 		</table>
@@ -877,8 +877,9 @@
 		var td = tr.selectAll("td")
 			.data(function(d){return d3.values(d)})
 			.enter().append("td")
+			.attr("padding", "1500px")
 			.text(function(d) {return d})
- 
+ 			
  
  
 		</script>
