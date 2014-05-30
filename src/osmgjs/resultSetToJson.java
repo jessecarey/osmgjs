@@ -3,8 +3,16 @@ package osmgjs;
 import org.json.*;
 
 import java.sql.*;
- 
+
 public class resultSetToJson {
+	/**
+	 * takes in a jdbc result set, converts the results set into a 
+	 * properly formatted json array.
+	 * @param ResultSetrs
+	 * @return JSONArray with all the data from the resultSet 
+	 * @throws SQLException
+	 * @throws JSONException
+	 */
 	public static JSONArray jsonConvert(ResultSet rs) throws SQLException, JSONException{
 	    JSONArray json = new JSONArray();
 	    ResultSetMetaData rsmd = rs.getMetaData();

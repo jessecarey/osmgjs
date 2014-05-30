@@ -23,6 +23,7 @@
 		
 		<script type = "text/javascript">
 		var jsonNumber = "${param.num}";
+		//test json data
 		var json1 = new Array({"email":"mewebsales","location":"Fleet Deployed-5th Fleet-Mid East Region"},
 				{"email":"websale","location":"United_States-Woodbury OMSC New York"},
 				{"email":"aarias","location":"United States-Woodbury OMSC New York"},
@@ -824,7 +825,7 @@
 				)
 		
 		var json2 = new Array({
-		    "agentName": "test name",
+		    "agentName": "",
 		    "agentNumber": 0,
 		    "ezApp": 9,
 		    "temp": 1,
@@ -833,7 +834,7 @@
 		    "delivered": 56,
 		    "cancelled": 110,
 		    "open": 2,
-		    "isrCustomerInfoList": [4,88,12]
+		    "isrCustomerInfoList": []
 		})
 		
 		var json3 = new Array({
@@ -877,15 +878,15 @@
 		</table>
 		
 		<script type="text/javascript">
-		
+		//created table headers based on attribute names in the first json column
 		var thead = d3.select("thead").selectAll("th")
 			.data(d3.keys(users[0]))
 			.enter().append("th").text(function(d){return d});
-
+		//creates a table row for every json element
 		var tr = d3.select("tbody").selectAll("tr")
 			.data(users).enter().append("tr")
  
-
+		//creates a td for every value in each json row
 		var td = tr.selectAll("td")
 			.data(function(d){return d3.values(d)})
 			.enter().append("td")

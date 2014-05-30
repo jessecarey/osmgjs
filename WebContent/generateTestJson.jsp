@@ -14,9 +14,9 @@ try {
 	// TODO Auto-generated catch block
 	e.printStackTrace();
 }
-json.put(obj);
-json.put(obj);
-json.put(obj);
+for(int i = 0; i<20000; i++){
+	json.put(obj);
+}
 session.setAttribute("json", json.toString());
 System.out.println(obj.toString());
 System.out.println(session.getAttribute("json"));
