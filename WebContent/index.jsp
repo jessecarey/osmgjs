@@ -850,15 +850,20 @@
 			"extremelylongdatanamefieldtotestvalueswith": 34434333,
 			"email": "extremelylongemailIneedtotestthistablewith"
 		})
-		if (jsonNumber==2){
-			users = json2
+		if (jsonNumber==4){
+			var temp = <%= session.getAttribute("json")%>
+			users = temp
 		}
 		else
-			if (jsonNumber==3){
-				users = json3
+			if (jsonNumber==2){
+				users = json2
 			}
 			else
-				users = json1
+				if (jsonNumber==3){
+					users = json3
+				}
+				else
+					users = json1
 				
 		
 
