@@ -47,6 +47,10 @@
 	var obj = JSON.parse(jsont);
 	var mon = JSON.parse(jsonMonthGoal);
 	var year = JSON.parse(jsonYearGoal);	
+	var data = [9,1,5,1];
+	var yearGoal = [50,50,200,10]
+	var monthGoal = [5,10,20,20]
+	
 	</script>
 
 </head>
@@ -93,7 +97,7 @@
 			</thead>
 			<thead>
 				<th></th>
-				<th></th>
+				<th>Month Data</th>
 				<th>Month Goal</th>
 			</thead>
 			<tr>
@@ -119,6 +123,9 @@
 			
 		</table>
 	</div>
+	<div id ="chart"></div>
+	
+	
 	
 	<script type = "text/javascript">
 	
@@ -138,7 +145,36 @@
 	d3.select("#opyear").text(year.openGoal)
 	d3.select("#queyear").text(year.queuedGoal)
 	d3.select("#ezyear").text(year.ezAppGoal)
+	d3.select("#chart").append("svg");
+	d3.select("svg")
+	   .data(yearGoal)
+	  .enter().append("rect")  
+	  .attr("width", function(d) {
+		    return d*25;  //Bar width of 20 plus 1 for padding
+	  })
+	   .attr("height", 35)
+		.attr("x", 15)
+		.attr("y", function(d, i) {
+		    return i * 50;  //Bar width of 20 plus 1 for padding
+		})
+		.attr("fill", "blue")
 	
+	
+	d3.select("svg")
+	  .data(data)
+	  .enter().append("rect")  
+	  .attr("width", function(d) {
+		    return d*25;  //Bar width of 20 plus 1 for padding
+	  })
+	   .attr("height", 35)
+		.attr("x", 15)
+		.attr("y", function(d, i) {
+		    return i * 50;  //Bar width of 20 plus 1 for padding
+		})
+		.attr("fill", "teal")
+	
+	
+
 	</script>
 </body>
 </html>
