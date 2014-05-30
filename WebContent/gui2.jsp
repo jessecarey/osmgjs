@@ -146,7 +146,8 @@
 	d3.select("#queyear").text(year.queuedGoal)
 	d3.select("#ezyear").text(year.ezAppGoal)
 	d3.select("#chart").append("svg");
-	d3.select("svg")
+	var rect = d3.select("svg")
+	  .selectAll("rect")
 	   .data(yearGoal)
 	  .enter().append("rect")  
 	  .attr("width", function(d) {
@@ -161,6 +162,7 @@
 	
 	
 	d3.select("svg")
+	  .selectAll("rect")
 	  .data(data)
 	  .enter().append("rect")  
 	  .attr("width", function(d) {
