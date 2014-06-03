@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -864,7 +865,8 @@
 					users = json3
 				}
 				else
-					users = json1
+					else
+						users = json1
 				
 		
 
@@ -885,15 +887,13 @@
 		//creates a table row for every json element
 		var tr = d3.select("tbody").selectAll("tr")
 			.data(users).enter().append("tr")
- 
+ 		
 		//creates a td for every value in each json row
 		var td = tr.selectAll("td")
 			.data(function(d){return d3.values(d)})
 			.enter().append("td")
 			.text(function(d) {return d})
- 			
- 
- 
+
 		</script>
 
  	<a href = "index.jsp?num=1">Data Set One</a>
