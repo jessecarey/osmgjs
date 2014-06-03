@@ -48,9 +48,13 @@
 	var mon = JSON.parse(jsonMonthGoal);
 	var year = JSON.parse(jsonYearGoal);	
 	var data = [9,1,5,1];
-	var yearGoal = [50,50,200,10]
+	var yearGoal = [50,50,200,210]
 	var monthGoal = [5,10,20,20]
-	
+	var matrix = [
+	              [50,50,200,10], 
+	              [5,10,20,20], 
+	              [9,1,5,1]
+	             ]
 	</script>
 
 </head>
@@ -146,12 +150,28 @@
 	d3.select("#queyear").text(year.queuedGoal)
 	d3.select("#ezyear").text(year.ezAppGoal)
 	d3.select("#chart").append("svg");
-	var rect = d3.select("svg")
+	
+	var layerOne = d3.select("svg").
+    append("g")
+    .attr("class", "0")
+	.attr("id", "0");
+	
+	var layerTwo = d3.select("svg").
+    append("g")
+    .attr("class", "1")
+	.attr("id", "1");
+	
+	var layerThree = d3.select("svg").
+    append("g")
+    .attr("class", "2")
+	.attr("id", "2");
+	
+	layerOne
 	  .selectAll("rect")
-	   .data(yearGoal)
+	  .data(yearGoal)
 	  .enter().append("rect")  
 	  .attr("width", function(d) {
-		    return d*25;  //Bar width of 20 plus 1 for padding
+		    return d*3;  //Bar width of 20 plus 1 for padding
 	  })
 	   .attr("height", 35)
 		.attr("x", 15)
@@ -160,13 +180,12 @@
 		})
 		.attr("fill", "blue")
 	
-	
-	d3.select("svg")
+	layerTwo
 	  .selectAll("rect")
-	  .data(data)
+	  .data(monthGoal)
 	  .enter().append("rect")  
 	  .attr("width", function(d) {
-		    return d*25;  //Bar width of 20 plus 1 for padding
+		    return d*3;  //Bar width of 20 plus 1 for padding
 	  })
 	   .attr("height", 35)
 		.attr("x", 15)
@@ -174,7 +193,22 @@
 		    return i * 50;  //Bar width of 20 plus 1 for padding
 		})
 		.attr("fill", "teal")
-	
+			
+		
+	layerThree
+	  .selectAll("rect")
+	  .data(data)
+	  .enter().append("rect")  
+	  .attr("width", function(d) {
+		    return d*3;  //Bar width of 20 plus 1 for padding
+	  })
+	   .attr("height", 35)
+		.attr("x", 15)
+		.attr("y", function(d, i) {
+		    return i * 50;  //Bar width of 20 plus 1 for padding
+		})
+		.attr("fill", "black")
+		
 	
 
 	</script>
