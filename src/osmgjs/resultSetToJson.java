@@ -14,7 +14,7 @@ public class resultSetToJson {
 	 * @throws JSONException
 	 */
 	public static JSONArray jsonConvert(ResultSet rs) throws SQLException, JSONException{
-	    JSONArray json = new JSONArray();
+		JSONArray json = new JSONArray();
 	    ResultSetMetaData rsmd = rs.getMetaData();
 	    int numColumns = rsmd.getColumnCount();
 	    JSONObject obj;

@@ -865,8 +865,7 @@
 					users = json3
 				}
 				else
-					else
-						users = json1
+					users = json1
 				
 		
 
