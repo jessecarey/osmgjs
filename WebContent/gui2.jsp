@@ -171,26 +171,26 @@
 	  .data(yearGoal)
 	  .enter().append("rect")  
 	  .attr("width", function(d) {
-		    return d*3;  //Bar width of 20 plus 1 for padding
+		    return d*3;  
 	  })
 	   .attr("height", 35)
 		.attr("x", 15)
 		.attr("y", function(d, i) {
-		    return i * 50;  //Bar width of 20 plus 1 for padding
-		})
-		.attr("fill", "blue")
+		    return i * 50; 
+		    })
+		.attr("fill", "blue");
 	
 	layerTwo
 	  .selectAll("rect")
 	  .data(monthGoal)
 	  .enter().append("rect")  
 	  .attr("width", function(d) {
-		    return d*3;  //Bar width of 20 plus 1 for padding
+		    return d*3;
 	  })
 	   .attr("height", 35)
 		.attr("x", 15)
 		.attr("y", function(d, i) {
-		    return i * 50;  //Bar width of 20 plus 1 for padding
+		    return i * 50;  
 		})
 		.attr("fill", "teal")
 			
@@ -200,13 +200,12 @@
 	  .data(data)
 	  .enter().append("rect")  
 	  .attr("width", function(d) {
-		    return d*3;  //Bar width of 20 plus 1 for padding
-	  })
+		    return d*3;  	  })
 	   .attr("height", 35)
 		.attr("x", 15)
 		.attr("y", function(d, i) {
-		    return i * 50;  //Bar width of 20 plus 1 for padding
-		})
+		    return i * 50;
+		    })
 		.attr("fill", "black")
 		
 	

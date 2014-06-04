@@ -1,7 +1,12 @@
 package osmgjs;
 
 import java.io.Serializable;
-
+/**
+ * Stores data from PersonLocation, or any similarly formatted
+ * csv.
+ * @author bpmdev
+ *
+ */
 public class personBean implements Serializable {
 	private String email;
 	private String location;
