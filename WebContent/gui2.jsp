@@ -3,19 +3,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<style>
-.axis text {
-  font: 15px sans-serif;
-}
-
-.axis path,
-.axis line {
-  fill: none;
-  stroke: #000;
-  shape-rendering: crispEdges;
-}
-
-</style>
 
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Javascript Test</title>
@@ -147,6 +134,7 @@
 	d3.select("#ezyear").text(year.ezAppGoal)
 	d3.select("#chart").append("svg");
 	
+	var svg = d3.select("svg");
 	var margin = {top: 20, right: 30, bottom: 30, left: 40}
 
 	
@@ -160,14 +148,14 @@
     	.range([height, 0]);
 	
 	var xAxis = d3.svg.axis()
-    .scale(x, y)
+    .scale(x)
     .orient("bottom")
-    .ticks(20);
+    .ticks(5);
 	
 	
 	d3.select("svg")
 		.attr("width", width)
-		.attr("height", height);
+		.attr("height", height);	
 	
 	var layerOne = d3.select("svg").
     append("g")
@@ -226,6 +214,15 @@
 		    })
 		.attr("fill", "black")
 	
+	
+	svg.append("g")			// Add the X Axis
+    .attr("class", "x axis")
+    .attr("transform", "translate(0," + height + ")")
+	
+	svg.select("g.x").call(xAxis);
+		
+		
+		
 	var legend = d3.select("#chart").append("svg")
 		.attr("width", 200)
 		.attr("height", 250)
@@ -272,6 +269,7 @@
     .attr("dy", ".35em")
     .style("text-anchor", "end")
     .text("Year Goal");
+	
 
 
 	</script>
