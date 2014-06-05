@@ -3,8 +3,22 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<style>
+.axis text {
+  font: 15px sans-serif;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+</style>
+
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Javascript Test</title>
 		<script type="text/javascript" src="http://mbostock.github.com/d3/d3.js"></script>
 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 		<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
@@ -25,36 +39,18 @@
 		}
 	</style>
 	<script type = "text/javascript">
-	var jsontest = new Array({
-	    "agentName": "John Smith",
-	    "agentNumber": 15546,
-	    "ezApp": 9,
-	    "temp": 1,
-	    "queued": 0,
-	    "pending": 1,
-	    "delivered": 56,
-	    "cancelled": 110,
-	    "open": 2,
-	    "isrCustomerInfoList": []
-	})
-	
 	var jsont = '{ "agentName": "John Smith", "agentNumber": 15546, "ezApp": 9, "temp": 1, "queued": 0, "pending": 1, "delivered": 56, "cancelled": 110, "open": 2}';
-	
-	
 	var jsonYearGoal = '{ "agentNumer": 15546, "ezAppGoal": 50, "openGoal": 200, "pendingGoal": 210, "queuedGoal": 50 }';
 	var jsonMonthGoal = '{ "agentNumer": 15546, "ezAppGoal": 5, "openGoal": 20, "pendingGoal": 20, "queuedGoal": 10 }';
-
+	//parse JSON
 	var obj = JSON.parse(jsont);
 	var mon = JSON.parse(jsonMonthGoal);
 	var year = JSON.parse(jsonYearGoal);	
-	var data = [9,1,5,1];
-	var yearGoal = [50,50,200,210]
-	var monthGoal = [5,10,20,20]
-	var matrix = [
-	              [50,50,200,10], 
-	              [5,10,20,20], 
-	              [9,1,5,1]
-	             ]
+	//convert parsedJson into arrays for graph display
+	var data = [obj.ezApp,obj.queued,obj.open,obj.pending];
+	var yearGoal = [year.ezAppGoal,year.queuedGoal,year.openGoal,year.pendingGoal]
+	var monthGoal = [mon.ezAppGoal,mon.queuedGoal,mon.openGoal,mon.pendingGoal]
+
 	</script>
 
 </head>
@@ -151,6 +147,28 @@
 	d3.select("#ezyear").text(year.ezAppGoal)
 	d3.select("#chart").append("svg");
 	
+	var margin = {top: 20, right: 30, bottom: 30, left: 40}
+
+	
+	var width = 650 + margin.right + margin.left;
+	var height = 200 + margin.top + margin.bottom ;
+	
+	var x = d3.scale.ordinal()
+    	.rangeRoundBands([0, width], .1);
+
+	var y = d3.scale.linear()
+    	.range([height, 0]);
+	
+	var xAxis = d3.svg.axis()
+    .scale(x, y)
+    .orient("bottom")
+    .ticks(20);
+	
+	
+	d3.select("svg")
+		.attr("width", width)
+		.attr("height", height);
+	
 	var layerOne = d3.select("svg").
     append("g")
     .attr("class", "0")
@@ -207,8 +225,54 @@
 		    return i * 50;
 		    })
 		.attr("fill", "black")
-		
 	
+	var legend = d3.select("#chart").append("svg")
+		.attr("width", 200)
+		.attr("height", 250)
+		.append("g");
+
+	legend.append("rect")
+		.attr("x", 0)
+		.attr("y", 0)
+		.attr("width", 20)
+		.attr("height", 20)
+		.attr("fill", "black")
+	
+	legend.append("text")
+    .attr("x", 110)
+    .attr("y", 10)
+    .attr("dy", ".35em")
+    .style("text-anchor", "end")
+    .text("Current Data");	
+		
+	legend.append("rect")
+		.attr("x", 0)
+		.attr("y", 25)
+		.attr("width", 20)
+		.attr("height", 20)
+		.attr("fill", "teal");
+	
+	legend.append("text")
+    .attr("x", 100)
+    .attr("y", 35)
+    .attr("dy", ".35em")
+    .style("text-anchor", "end")
+    .text("Month Goal");
+	
+	legend.append("rect")
+		.attr("x", 0)
+		.attr("y", 50)
+		.attr("width", 20)
+		.attr("height", 20)
+		.attr("fill", "blue");
+	
+	legend.append("text")
+    .attr("x", 95)
+    .attr("y", 60)
+    .attr("dy", ".35em")
+    .style("text-anchor", "end")
+    .text("Year Goal");
+
 
 	</script>
 </body>
