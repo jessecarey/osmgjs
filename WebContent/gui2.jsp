@@ -172,6 +172,7 @@
     .attr("class", "2")
 	.attr("id", "2");
 	
+	//Creates overlapping bar graphs
 	layerOne
 	  .selectAll("rect")
 	  .data(yearGoal)
@@ -222,7 +223,7 @@
 	svg.select("g.x").call(xAxis);
 		
 		
-		
+	//creates legend	
 	var legend = d3.select("#chart").append("svg")
 		.attr("width", 200)
 		.attr("height", 250)
