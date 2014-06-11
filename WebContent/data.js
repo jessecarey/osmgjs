@@ -3,7 +3,7 @@
  */
 
 //test json data
-		var json5 = new Array({"cmcust":102445188,"cmfrst":"ANGELYN   ","cmmi":"M","cmlast":"WALKER        ","cmnam@":"                ","cmnmso":"                                   ","cmadr1":"433 COATS RD             ","cmadr2":"LAKE ORION MI 48362      ","cmadr3":"                         ","cmcity":"                   ","cmst":"  ","cmzip":"         ","cmstel":24845914620000,"cmmad1":"433 COATS RD             ","cmmad2":"LAKE ORION MI            ","cmmad3":"48362                    ","cmapo":9603,"cmmtel":0,"cmnxds":"                         ","cmnxdt":99999999,"cmbrch":"F","cmrank":"E4","cmdob":19860505,"cmyisc":4,"cmmrtl":"M","cm#kid":0,"cmbpay":0,"cmsepd":99999999,"cmdero":20110929,"cmcomp":2,"oemcus":102445188,"oemadd":"                                                                                "});
+		var json5 = new Array({"cmcust":102445188,"cmfrst":"ANGELYN","cmmi":"M","cmlast":"WALKER","cmnam@":"","cmnmso":"","cmadr1":"433 COATS RD","cmadr2":"LAKE ORION MI 48362","cmadr3":"","cmcity":"","cmst":"","cmzip":"","cmstel":24845914620000,"cmmad1":"433 COATS RD","cmmad2":"LAKE ORION MI","cmmad3":"48362","cmapo":9603,"cmmtel":0,"cmnxds":"","cmnxdt":99999999,"cmbrch":"F","cmrank":"E4","cmdob":19860505,"cmyisc":4,"cmmrtl":"M","cm#kid":0,"cmbpay":0,"cmsepd":99999999,"cmdero":20110929,"cmcomp":2,"oemcus":102445188,"oemadd":""});
 		var json1 = new Array({"email":"mewebsales","location":"Fleet Deployed-5th Fleet-Mid East Region"},
 				{"email":"websale","location":"United_States-Woodbury OMSC New York"},
 				{"email":"aarias","location":"United States-Woodbury OMSC New York"},

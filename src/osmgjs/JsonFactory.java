@@ -55,6 +55,9 @@ public class JsonFactory {
         for (int i = 1; i <= columnCount; ++i) {
             String columnName = metaData.getColumnName(i).toLowerCase();
             Object object = resultSet.getObject(i);
+            if(object instanceof String){
+            	object = ((String)object).trim();
+            }
             resultsMap.put(columnName, object);
         }
         return resultsMap;
