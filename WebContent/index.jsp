@@ -53,6 +53,7 @@
 		var thead = d3.select("thead").selectAll("th")
 			.data(d3.keys(users[0]))
 			.enter().append("th").text(function(d){return d});
+		
 		//creates a table row for every json element
 		var tr = d3.select("tbody").selectAll("tr")
 			.data(users).enter().append("tr")

@@ -1,6 +1,4 @@
 package osmgjs;
-import java.sql.Driver;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
@@ -54,6 +52,7 @@ public class JsonFactory {
         LinkedHashMap<String, Object> resultsMap = new LinkedHashMap<>();
         for (int i = 1; i <= columnCount; ++i) {
             String columnName = metaData.getColumnName(i).toLowerCase();
+            columnName = columnName.replace("-", " ");
             Object object = resultSet.getObject(i);
             if(object instanceof String){
             	object = ((String)object).trim();

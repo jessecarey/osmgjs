@@ -66,6 +66,8 @@ public class csvToJson {
 		boolean initial = true;
 		ArrayList<String> header = new ArrayList<String>();
 		JSONObject record = new JSONObject();
+		
+		
 		try {
 			fileReader = new BufferedReader(new FileReader(fileToParse));
 			while ((line = fileReader.readLine()) != null) {
