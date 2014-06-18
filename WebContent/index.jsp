@@ -13,33 +13,39 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 		<script src="js/bootstrap.min.js"></script>
 		<script src = "data.js" type = "text/javascript"></script>
-		
+
 		<style media="screen" type="text/css">
 		th{padding:15px;
 		}
 		</style>
-		
-		
+
+
 		<script type = "text/javascript">
+		var path = "Json/";
 		var jsonNumber = "${param.num}";
 		if (jsonNumber==4){
 			var temp = <%= session.getAttribute("json")%>
-			users = temp
+			//users = temp
+			path = path + "customer.json";
 		}
 		else
 			if (jsonNumber==2){
 				users = json2
+				path = path + "test.json";
 			}
 			else
 				if (jsonNumber==3){
 					users = json3
+					path = path + "order.json";
 				}
 				else
 					if (jsonNumber ==5){
 						users = json5
 					}
-					else
+					else{
 						users = json1
+						path = path + "person.json";
+					}
 		</script>
 	</head>
 	<body>
@@ -47,13 +53,20 @@
 			<thead></thead>
 			<tbody></tbody>
 		</table>
-		
+
 		<script type="text/javascript">
 		//created table headers based on attribute names in the first json column
+		
+		
+	
+		
+		var users = d3.json(path, function(users){
+			
+		
 		var thead = d3.select("thead").selectAll("th")
 			.data(d3.keys(users[0]))
 			.enter().append("th").text(function(d){return d});
-		
+
 		//creates a table row for every json element
 		var tr = d3.select("tbody").selectAll("tr")
 			.data(users).enter().append("tr")
@@ -63,7 +76,9 @@
 			.data(function(d){return d3.values(d)})
 			.enter().append("td")
 			.text(function(d) {return d})
-
+		})
+		
+		
 		</script>
 	<a href = "index.jsp?num=1">Data Set One</a>
  	<a href = "index.jsp?num=2">Data Set Two</a>
@@ -71,6 +86,3 @@
  	
 	</body>
 </html>
-
-
-

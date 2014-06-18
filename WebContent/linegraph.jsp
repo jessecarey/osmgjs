@@ -53,7 +53,7 @@ body {
 
 var parseDate = d3.time.format("%d-%b-%y").parse;
 
-var x = d3.time.scale()
+var x = d3.scale.linear()
     .range([0, width]);
 
 var y = d3.scale.linear()
@@ -68,8 +68,8 @@ var yAxis = d3.svg.axis()
     .orient("left");
 
 var line = d3.svg.line()
-    .x(function(d) { return x(d.date); })
-    .y(function(d) { return y(d.close); });
+    .x(function(d) { return x(d.rdate); })
+    .y(function(d) { return y(d.ramount); });
 
 var svg = d3.select("body").append("svg")
     .attr("width", width + margin.left + margin.right)
@@ -77,14 +77,14 @@ var svg = d3.select("body").append("svg")
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-d3.tsv("data.tsv", function(error, data) {
+d3.json("Json/order.json", function(data) {
   data.forEach(function(d) {
-    d.date = parseDate(d.date);
-    d.close = +d.close;
+    d.rdate = +d.rdate;
+    d.ramount = +d.ramount;
   });
 
-  x.domain(d3.extent(data, function(d) { return d.date; }));
-  y.domain(d3.extent(data, function(d) { return d.close; }));
+  x.domain(d3.extent(data, function(d) { return d.rdate; }));
+  y.domain(d3.extent(data, function(d) { return d.ramount; }));
 
   svg.append("g")
       .attr("class", "x axis")
