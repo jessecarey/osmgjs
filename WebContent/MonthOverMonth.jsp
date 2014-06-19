@@ -61,7 +61,7 @@
 <title>Month Over Month</title>
 </head>
 <body>
-	<%@ include file="utilities/navbar.html" %>
+	<%@ include file="utilities/navbar.html"%>
 	<div>
 		<table id="2014data" border-spacing="5em"
 			class="table table-striped table-bordered table-condensed">
@@ -122,6 +122,7 @@
 
 	</br>
 	</br>
+	<div id="legend"></div>
 	<div id="container"></div>
 
 	<script>
@@ -133,14 +134,12 @@
 		}, width = 960 - margin.left - margin.right, height = 500 - margin.top
 				- margin.bottom;
 
-
-
 		var svg = d3.select("#container").append("svg").attr("width",
 				width + margin.left + margin.right).attr("height",
 				height + margin.top + margin.bottom)
 		var layerOne = d3.select("svg").append("g").attr("id", "g1");
 		var layerTwo = d3.select("svg").append("g").attr("id", "g2");
-		
+
 		d3.json("Json/deliveriesmay13.json", function(data) {
 			var total;
 			var chrysTotal = 0;
@@ -175,7 +174,8 @@
 			})
 			total = chrysTotal + vwTotal + hdTotal + forTotal + toyTotal
 					+ harTotal + audTotal + adoTotal + mercTotal;
-			var data = new Array(total, chrysTotal, vwTotal, hdTotal, forTotal, toyTotal, harTotal, audTotal, adoTotal, mercTotal);
+			var data = new Array(total, chrysTotal, vwTotal, hdTotal, forTotal,
+					toyTotal, harTotal, audTotal, adoTotal, mercTotal);
 
 			d3.select("#chr13").text(chrysTotal);
 			d3.select("#vw13").text(vwTotal);
@@ -188,23 +188,17 @@
 			d3.select("#chr13").text(chrysTotal);
 			d3.select("#total13").text(total);
 			d3.select("#merc13").text(mercTotal);
-			
-			layerOne
-			  .selectAll("rect")
-			  .data(data)
-			  .enter().append("rect")  
-			  .attr("width", function(d) {
-				    return d/3;  
-			  })
-			   .attr("height", 20)
-				.attr("x", 15)
-				.attr("y", function(d, i) {
-				    return i * 40+12; 
-				    })
-				.attr("fill", "teal");
+
+			layerOne.selectAll("rect").data(data).enter().append("rect").attr(
+					"width", function(d) {
+						return d / 3;
+					}).attr("height", 20).attr("x", 15).attr("y",
+					function(d, i) {
+						return i * 40 + 12;
+					}).attr("fill", "teal");
 
 		});
-		
+
 		d3.json("Json/deliveriesmay14.json", function(data) {
 			var total;
 			var chrysTotal = 0;
@@ -239,7 +233,8 @@
 			})
 			total = chrysTotal + vwTotal + hdTotal + forTotal + toyTotal
 					+ harTotal + audTotal + adoTotal + mercTotal;
-			var data = new Array(total, chrysTotal, vwTotal, hdTotal, forTotal, toyTotal, harTotal, audTotal, adoTotal, mercTotal);
+			var data = new Array(total, chrysTotal, vwTotal, hdTotal, forTotal,
+					toyTotal, harTotal, audTotal, adoTotal, mercTotal);
 
 			d3.select("#chr14").text(chrysTotal);
 			d3.select("#vw14").text(vwTotal);
@@ -252,23 +247,31 @@
 			d3.select("#chr14").text(chrysTotal);
 			d3.select("#total14").text(total);
 			d3.select("#merc14").text(mercTotal);
-			
-			layerTwo
-			  .selectAll("rect")
-			  .data(data)
-			  .enter().append("rect")  
-			  .attr("width", function(d) {
-				    return d/3;  
-			  })
-			   .attr("height", 20)
-				.attr("x", 15)
-				.attr("y", function(d, i) {
-				    return i * 40; 
-				    })
-				.attr("fill", "blue");
+
+			layerTwo.selectAll("rect").data(data).enter().append("rect").attr(
+					"width", function(d) {
+						return d / 3;
+					}).attr("height", 20).attr("x", 15).attr("y",
+					function(d, i) {
+						return i * 40;
+					}).attr("fill", "blue");
 
 		});
 
+		var legend = d3.select("#legend").append("svg").attr("width", 300)
+				.attr("height", 100);
+
+		legend.append("rect").attr("x", 20).attr("y", 0).attr("width", 20)
+				.attr("height", 20).attr("fill", "blue")
+
+		legend.append("text").attr("x", 180).attr("y", 10).attr("dy", ".35em")
+				.style("text-anchor", "end").text("2014 Deliveries");
+
+		legend.append("rect").attr("x", 20).attr("y", 35).attr("width", 20)
+				.attr("height", 20).attr("fill", "teal")
+				
+		legend.append("text").attr("x", 180).attr("y", 43).attr("dy", ".35em")
+				.style("text-anchor", "end").text("2013 Deliveries");
 	</script>
 
 
