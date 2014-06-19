@@ -61,12 +61,8 @@
 <title>Month Over Month</title>
 </head>
 <body>
+	<%@ include file="utilities/navbar.html" %>
 	<div>
-		<div class="row-fluid">
-			<p class="navbar-text">May Delivieries Year Over Year</p>
-
-		</div>
-		</br> </br> </br> </br>
 		<table id="2014data" border-spacing="5em"
 			class="table table-striped table-bordered table-condensed">
 			<tr>
