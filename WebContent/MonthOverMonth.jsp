@@ -1,17 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <script type="text/javascript" src="http://mbostock.github.com/d3/d3.js"></script>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
-<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet"
+	href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+<script
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<link rel="stylesheet"
+	href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+<script
+	src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 <link href="css/bootstrap.min.css" rel="stylesheet">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/bootstrap.js"></script>
 <script src="data.js" type="text/javascript"></script>
@@ -32,13 +39,15 @@
 }
 </style>
 <script>
+	var legendOne = "May 2014";
+	var legendTwo = "May 2013";
 	var yearToLoad;
 	var monthToLoad;
 	var jsonNameOne = "Json/deliveries20140500.json";
 	var jsonNameTwo = "Json/deliveries20130500.json";
 	var headerOne = "May 2014 Deliveries";
-	var headerTwo = "May 2013 Deliveries" ;
-	
+	var headerTwo = "May 2013 Deliveries";
+
 	function loadDropDown() {
 		var dropdown = d3.select("#yeardropdownone");
 		var dropdownmonth = d3.select("#monthdropdownone");
@@ -50,40 +59,43 @@
 		});
 		months.forEach(function(d) {
 			dropdownmonth.append("option").attr("value", d.value).text(d.name);
-			dropdownmonthtwo.append("option").attr("value", d.value).text(d.name);
+			dropdownmonthtwo.append("option").attr("value", d.value).text(
+					d.name);
 		})
 	}
 
 	function load() {
 		monthToLoad = document.getElementById("monthdropdownone").value;
 		yearToLoad = document.getElementById("yeardropdownone").value;
+		legendOne = monthToLoad.concat(" ", yearToLoad);
 		jsonNameOne = "Json/deliveries";
 		jsonNameOne = jsonNameOne.concat(yearToLoad, monthToLoad, "00.json");
 		loadFirst(jsonNameOne);
 		var monthValue;
-		if(monthToLoad =="05")
+		if (monthToLoad == "05")
 			monthValue = "May";
-		if(monthToLoad == "06")
+		if (monthToLoad == "06")
 			monthValue = "June";
 		headerName = "";
-		headerName = headerName.concat(monthValue, " ", yearToLoad, " Deliveries");
-		d3.select("#headerOne").text(headerName);			
+		headerName = headerName.concat(monthValue, " ", yearToLoad);
+		d3.select("#headerOne").text(headerName);
 	}
-	
-	function loadTwo(){
+
+	function loadTwo() {
 		monthToLoad = document.getElementById("monthdropdowntwo").value;
 		yearToLoad = document.getElementById("yeardropdowntwo").value;
+		legendTwo = monthToLoad.concat(" ", yearToLoad);
 		jsonNameTwo = "Json/deliveries";
 		jsonNameTwo = jsonNameTwo.concat(yearToLoad, monthToLoad, "00.json");
 		loadSecond(jsonNameTwo);
 		var monthValue;
-		if(monthToLoad =="05")
+		if (monthToLoad == "05")
 			monthValue = "May";
-		if(monthToLoad == "06")
+		if (monthToLoad == "06")
 			monthValue = "June";
 		headerName = "";
-		headerName = headerName.concat(monthValue, " ", yearToLoad, " Deliveries");
-		d3.select("#headerTwo").text(headerName);	
+		headerName = headerName.concat(monthValue, " ", yearToLoad);
+		d3.select("#headerTwo").text(headerName);
 	}
 
 	function analize() {
@@ -114,7 +126,23 @@
 <title>Month Over Month</title>
 </head>
 <body>
-	<%@ include file="utilities/navbar.html"%>
+	<nav class="navbar navbar-default" role="navigation">
+	<div class="container-fluid">
+		<!-- Brand and toggle get grouped for better mobile display -->
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse"
+				data-target="#bs-example-navbar-collapse-1">
+				<span class="sr-only">Toggle navigation</span> <span
+					class="icon-bar"></span> <span class="icon-bar"></span> <span
+					class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand">Deliveries By Month, Year Over Year</a>
+		</div>
+
+	</div>
+	</nav>
+
+
 	<select onchange="load()" id="yeardropdownone">
 		<option>Select Year</option>
 	</select>
@@ -130,10 +158,12 @@
 	</select>
 	</br>
 	</br>
+	<div id="legend"></div>
+	<div id="container"></div>
 	<table id="2014data" border-spacing="5em"
 		class="table table-striped table-bordered table-condensed">
-		<caption id ="headerOne" >May 2014 Deliveries</caption>
 		<tr>
+			<td>Period</td>
 			<td>Total</td>
 			<td>Chrystler</td>
 			<td>Volkswagen</td>
@@ -146,6 +176,7 @@
 			<td>Mercades</td>
 		</tr>
 		<tr>
+			<td id="headerOne">May 2014</td>
 			<td id="total1"></td>
 			<td id="chr1"></td>
 			<td id="vw1"></td>
@@ -157,25 +188,8 @@
 			<td id="ado1"></td>
 			<td id="merc1"></td>
 		</tr>
-	</table>
-
-	<table id="2013data" border-spacing="5em"
-		class="table table-striped table-bordered table-condensed">
-		<caption id = "headerTwo">May 2013 Deliveries</caption>
-
 		<tr>
-			<td>Total</td>
-			<td>Chrystler</td>
-			<td>Volkswagen</td>
-			<td>Honda</td>
-			<td>Ford</td>
-			<td>Toyata</td>
-			<td>Harley</td>
-			<td>Audi</td>
-			<td>Nissan</td>
-			<td>Mercades</td>
-		</tr>
-		<tr>
+			<td id="headerTwo">May 2013</td>
 			<td id="total2"></td>
 			<td id="chr2"></td>
 			<td id="vw2"></td>
@@ -186,32 +200,36 @@
 			<td id="aud2"></td>
 			<td id="ado2"></td>
 			<td id="merc2"></td>
-		</tr>
+		<tr>
 	</table>
 	</div>
-
-	</br>
-	</br>
-	<div id="legend"></div>
-	<div id="container"></div>
 
 	<script>
 		loadDropDown()
 		loadFirst(jsonNameOne);
 		loadSecond(jsonNameTwo);
+		loadPie();
 		var margin = {
 			top : 20,
 			right : 20,
 			bottom : 30,
 			left : 50
-		}, width = 960 - margin.left - margin.right, height = 500 - margin.top
+		}, width = 700 - margin.left - margin.right, height = 500 - margin.top
 				- margin.bottom;
-
+		var radius = Math.min(width, height) / 2;
 		var svg = d3.select("#container").append("svg").attr("width",
 				width + margin.left + margin.right).attr("height",
 				height + margin.top + margin.bottom)
+		var pieSvg = d3.select("#container").append("svg").attr("width", 400)
+				.attr("height", 400);
 		var layerOne = d3.select("svg").append("g").attr("id", "g1");
 		var layerTwo = d3.select("svg").append("g").attr("id", "g2");
+		var legend = d3.select("svg").append("g").attr("id", "legend");
+		var arc = d3.svg.arc().outerRadius(radius - 10).innerRadius(0);
+
+		var pie = d3.layout.pie().sort(null).value(function(d) {
+			return d.population;
+		});
 
 		function loadSecond(path) {
 			d3.json(path, function(data) {
@@ -266,13 +284,15 @@
 
 				layerOne.selectAll("*").remove();
 				layerOne.selectAll("rect").data(data).enter().append("rect")
-						.attr("width", function(d) {
-							return d / 3;
-						}).attr("height", 20).attr("x", 15).attr("y",
-								function(d, i) {
-									return i * 40 + 12;
-								}).attr("fill", "teal");
+						.attr("width", 20).attr("height", function(d) {
+							return d / 3
+						}).attr("x", function(d, i) {
+							return i * 40 + 25;
+						}).attr("y", function(d) {
+							return 500 - d / 4
+						}).attr("fill", "teal")
 				analize()
+				loadLegend()
 
 			});
 		}
@@ -330,31 +350,64 @@
 
 				layerTwo.selectAll("*").remove();
 				layerTwo.selectAll("rect").data(data).enter().append("rect")
-						.attr("width", function(d) {
-							return d / 3;
-						}).attr("height", 20).attr("x", 15).attr("y",
-								function(d, i) {
-									return i * 40;
-								}).attr("fill", "blue");
+						.attr("width", 20).attr("height", function(d) {
+							return d / 3
+						}).attr("x", function(d, i) {
+							return i * 40 + 15;
+						}).attr("y", function(d) {
+							return 500 - d / 4
+						}).attr("fill", "blue");
 
 				analize()
-
+				loadLegend()
 			});
 		}
-		var legend = d3.select("#legend").append("svg").attr("width", 300)
-				.attr("height", 100);
 
-		legend.append("rect").attr("x", 20).attr("y", 0).attr("width", 20)
-				.attr("height", 20).attr("fill", "blue")
+		function loadLegend() {
+			legend.selectAll("*").remove();
+			legend.append("rect").attr("x", 250).attr("y", 15)
+					.attr("width", 20).attr("height", 20).attr("fill", "blue");
 
-		legend.append("text").attr("x", 180).attr("y", 10).attr("dy", ".35em")
-				.style("text-anchor", "end").text("2014 Deliveries");
+			legend.append("text").attr("x", 380).attr("y", 22).attr("dy",
+					".35em").style("text-anchor", "end").text(legendOne);
 
-		legend.append("rect").attr("x", 20).attr("y", 35).attr("width", 20)
-				.attr("height", 20).attr("fill", "teal")
+			legend.append("rect").attr("x", 250).attr("y", 35)
+					.attr("width", 20).attr("height", 20).attr("fill", "teal");
 
-		legend.append("text").attr("x", 180).attr("y", 43).attr("dy", ".35em")
-				.style("text-anchor", "end").text("2013 Deliveries");
+			legend.append("text").attr("x", 380).attr("y", 45).attr("dy",
+					".35em").style("text-anchor", "end").text(legendTwo);
+		}
+
+		function loadPie() {
+
+			d3.json("Json/deliveries.json", function(d) {
+				var data = [ 0, 0, 0, 0, 0, 0, 0, 0, 0 ];
+				d.forEach(function(d) {
+					if (d.pmn010 == "CHR")
+						data[0] += d.ccount;
+					if (d.pmn010 == "AVW" || d.pmn010 == "SWV")
+						data[1] += d.ccount;
+					if (d.pmn010 == "HAX" || d.pmn010 == "HON")
+						data[2] += d.ccount;
+					if (d.pmn010 == "FOR")
+						data[3] += d.ccount;
+					if (d.pmn010 == "TOY")
+						data[4] += d.ccount;
+					if (d.pmn010 == "HD")
+						data[5] += d.ccount;
+					if (d.pmn010 == "AUD" || d.pmn010 == "ADO")
+						data[6] += d.ccount;
+					if (d.pmn010 == "NPX")
+						data[7] += d.ccount;
+					if (d.pmn010 == "MBA")
+						data[8] += d.ccount;
+				});
+
+				console.log(data);
+
+			});
+
+		}
 	</script>
 
 
