@@ -1,0 +1,23 @@
+@CHARSET "ISO-8859-1";
+.red {
+	color: red;
+}
+
+.green {
+	color: green;
+}
+
+.table {
+	width: 49%;
+	float: left;
+}
+
+.smallLabel{
+	font-style: italic;
+	font-size: 10px;
+}
+
+.label{
+	font-style: italic;
+	font-size: 14px;
+}
