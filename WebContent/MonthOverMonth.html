@@ -35,6 +35,16 @@
 	width: 49%;
 	float: left;
 }
+
+.smallLabel{
+	font-style: italic;
+	font-size: 10px;
+}
+
+.label{
+	font-style: italic;
+	font-size: 14px;
+}
 </style>
 <script>
 	var legendOne = "May 2014";
@@ -374,31 +384,31 @@
 			var color = d3.scale.category20c();
 
 			var data = [ {
-				"label" : "Chrystler",
+				"label" : "CHR",
 				"value" : 465
 			}, {
-				"label" : "Volkswagen",
+				"label" : "AVW",
 				"value" : 52
 			}, {
-				"label" : "Honda",
+				"label" : "HAX",
 				"value" : 12
 			}, {
-				"label" : "Ford",
+				"label" : "FOR",
 				"value" : 555
 			}, {
-				"label" : "Toyata",
+				"label" : "TOY",
 				"value" : 58
 			}, {
-				"label" : "Harley",
+				"label" : "HD",
 				"value" : 216
 			}, {
-				"label" : "Audi",
+				"label" : "AUD",
 				"value" : 86
 			}, {
-				"label" : "Nissan",
+				"label" : "NPX",
 				"value" : 18
 			}, {
-				"label" : "Mercedes",
+				"label" : "MBA",
 				"value" : 7
 			}];
 
@@ -419,10 +429,16 @@
 				d.outerRadius = r;
 				return "translate(" + arc.centroid(d) + ")";
 			}).attr("text-anchor", "middle").text(function(d, i) {
-				if(data[i].value > 200)
-					return data[i].label;
+				if(data[i].value > 50)
+					return data[i].label + ":" + data[i].value;
 				else
 					return ""
+			}).attr("class", function(d, i){
+				if(data[i].value > 100)
+					return "label";
+				else
+					return "smallLabel";
+				
 			});
 
 
