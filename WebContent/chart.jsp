@@ -22,7 +22,7 @@
 				records : JSON.parse($('#task').text())
 			},
 			features:{
-				search:false,
+				search:true,
 				paginate:true
 			}
 			
