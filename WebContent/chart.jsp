@@ -1,0 +1,232 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<link rel="stylesheet"
+	href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+<script
+	src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+<script
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="js/dynatable.js"></script>
+<link rel="stylesheet" href="css/dynatable.css">
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Insert title here</title>
+<script>
+	$(document).ready(function() {
+		$('#table').dynatable({
+			dataset : {
+				records : JSON.parse($('#task').text())
+			},
+			features:{
+				search:false,
+				paginate:true
+			}
+			
+		})
+		dynatable.queries.add("objtype", "vehicle");
+		dynatable.process();
+	});
+</script>
+
+
+</head>
+<body>
+	<table class="table table-striped  table-condensed" id="table">
+		<thead>
+			<th>objtype</th>
+			<th>objid</th>
+			<th>type</th>
+			<th>assgrp</th>
+			<th>assrole</th>
+			<th>status</th>
+			<th>reqdate</th>
+			<th>duedate</th>
+			<th>requestedby</th>
+		</thead>
+		<tbody></tbody>
+	</table>
+</body>
+</html>
+
+<script id="task">
+[{
+	"objtype":"vehicle",
+	"objid":1,
+	"type":"?",
+	"assgrp":"ABC",
+	"assrole":"A",
+	"status":"open",
+	"reqdate":20120626,
+	"duedate":20120626,
+	"requestedby":"Mike"
+	},
+	{
+	"objtype":"person",
+	"objid":1,
+	"type":"?",
+	"assgrp":"ABC",
+	"assrole":"A",
+	"status":"open",
+	"reqdate":20120626,
+	"duedate":20120630,
+	"requestedby":"John"
+	},
+	{
+	"objtype":"vehicle",
+	"objid":2,
+	"type":"?",
+	"assgrp":"ABC",
+	"assrole":"B",
+	"status":"open",
+	"reqdate":20120626,
+	"duedate":20120626,
+	"requestedby":"Mike"
+	},
+	{
+	"objtype":"vehicle",
+	"objid":9,
+	"type":"?",
+	"assgrp":"ABC",
+	"assrole":"A",
+	"status":"closed",
+	"reqdate":20110626,
+	"duedate":20110626,
+	"requestedby":"software"
+	},
+	{
+	"objtype":"vehicle",
+	"objid":1,
+	"type":"?",
+	"assgrp":"ABC",
+	"assrole":"A",
+	"status":"open",
+	"reqdate":20120626,
+	"duedate":20120626,
+	"requestedby":"Mike"
+	},
+	{
+	"objtype":"vehicle",
+	"objid":9,
+	"type":"?",
+	"assgrp":"ABC",
+	"assrole":"A",
+	"status":"closed",
+	"reqdate":20110626,
+	"duedate":20110626,
+	"requestedby":"software"
+	},
+	{
+	"objtype":"vehicle",
+	"objid":9,
+	"type":"?",
+	"assgrp":"ABC",
+	"assrole":"A",
+	"status":"closed",
+	"reqdate":20110626,
+	"duedate":20110626,
+	"requestedby":"software"
+	},
+	{
+	"objtype":"vehicle",
+	"objid":9,
+	"type":"?",
+	"assgrp":"ABC",
+	"assrole":"A",
+	"status":"closed",
+	"reqdate":20110626,
+	"duedate":20110626,
+	"requestedby":"software"
+	},
+	{
+	"objtype":"vehicle",
+	"objid":9,
+	"type":"?",
+	"assgrp":"ABC",
+	"assrole":"A",
+	"status":"closed",
+	"reqdate":20110626,
+	"duedate":20110626,
+	"requestedby":"software"
+	},
+	{
+	"objtype":"vehicle",
+	"objid":9,
+	"type":"?",
+	"assgrp":"ABC",
+	"assrole":"A",
+	"status":"closed",
+	"reqdate":20110626,
+	"duedate":20110626,
+	"requestedby":"software"
+	},
+	{
+	"objtype":"vehicle",
+	"objid":9,
+	"type":"?",
+	"assgrp":"ABC",
+	"assrole":"A",
+	"status":"closed",
+	"reqdate":20110626,
+	"duedate":20110626,
+	"requestedby":"software"
+	},
+	{
+	"objtype":"vehicle",
+	"objid":9,
+	"type":"?",
+	"assgrp":"ABC",
+	"assrole":"A",
+	"status":"closed",
+	"reqdate":20110626,
+	"duedate":20110626,
+	"requestedby":"software"
+	},
+	{
+	"objtype":"vehicle",
+	"objid":9,
+	"type":"?",
+	"assgrp":"ABC",
+	"assrole":"A",
+	"status":"closed",
+	"reqdate":20110626,
+	"duedate":20110626,
+	"requestedby":"software"
+	},
+	{
+	"objtype":"vehicle",
+	"objid":9,
+	"type":"?",
+	"assgrp":"ABC",
+	"assrole":"A",
+	"status":"closed",
+	"reqdate":20110626,
+	"duedate":20110626,
+	"requestedby":"software"
+	},
+	{
+	"objtype":"vehicle",
+	"objid":9,
+	"type":"?",
+	"assgrp":"ABC",
+	"assrole":"A",
+	"status":"closed",
+	"reqdate":20110626,
+	"duedate":20110626,
+	"requestedby":"software"
+	},
+	{
+	"objtype":"vehicle",
+	"objid":9,
+	"type":"?",
+	"assgrp":"ABC",
+	"assrole":"A",
+	"status":"closed",
+	"reqdate":20110626,
+	"duedate":20110626,
+	"requestedby":"software"
+	} ]
+</script>

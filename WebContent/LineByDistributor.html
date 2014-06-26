@@ -18,8 +18,6 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/bootstrap.js"></script>
-<script src="data.js" type="text/javascript"></script>
-<script src="dataFormat.js" type="text/javascript"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
 
@@ -93,6 +91,12 @@
 	font: 10px sans-serif;
 	fill: rgba(88, 89, 93, .5);
 }
+
+.displayBar{
+	opacity :.5;
+	width:30;
+	fill:teal;
+}
 </style>
 </head>
 <body>
@@ -106,6 +110,8 @@
 				24333, 29117, 24527, 17478 ];
 		var dataTwo = [ 24509, 19466, 18004, 08381, 07312, 09926, 14761, 14815,
 				14333, 19117, 14527, 7478 ];
+		var dataThree = [ 24509, 19466, 18004, 18381, 17312, 19926, 24761, 24815,
+		  				24333, 29117, 24527, 17478 ];
 
 		function formatTick(d) {
 			return d;
@@ -113,7 +119,7 @@
 
 		var xLabels = d3.time.scale().domain(
 				[ new Date(2013, 0, 1), new Date(2013, 11, 31) ]).range(
-				[ 0, w ]);
+				[ 0, w ]);range
 		var x = d3.scale.linear().domain([ 0, data.length ]).range([ 0, w ]);
 		var y = d3.scale.linear().domain([ 0, d3.max(data) ]).range([ h, 0 ]);
 
@@ -141,11 +147,27 @@
 				"translate(-25,0)").call(yAxisLeft);
 
 		graph.append("svg:path").attr("d", line(data)).attr('class', 'line')
+		.append("svg:title").text("data one");
 
 		graph.append("svg:path").attr("d", line(dataTwo)).attr('class', 'line')
-				.style("stroke", "red").append("svg:title").text(function(d){
-					return d;
-				});
+				.style("stroke", "red").append("svg:title").text("data two");
+		
+		var bar = graph.append("svg:g").attr("id", "bar");
+		
+		bar.selectAll("rect").data(dataThree).enter().append("rect")
+		.attr("class", "displayBar").attr("x", function(d, i){ return i*57})
+		.attr("y", function(d){ return 238-d/120})
+		.attr("height", function(d){ return d/120})
+		.attr("width", 30).on("mouseover", function(){
+			d3.select(this).style("opacity", 1)
+		})
+		.on("mouseout", function(){
+			d3.select(this).style("opacity", .5)})
+		.append("svg:title").text(function(d, i){ return i+1 + " is " +  d
+			
+		});
+		
+
 	</script>
 </body>
 </html>

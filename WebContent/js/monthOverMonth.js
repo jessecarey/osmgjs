@@ -156,6 +156,13 @@ function loadSecond(path) {
 		}).attr("y", function(d) {
 			return 500 - d / 4
 		}).attr("fill", "teal")
+		.attr("class", "bartwo")
+		.on("mouseover", function(){
+			d3.selectAll(".bartwo").style("opacity", 1);
+		})
+		on("mouseout", function(){
+			d3.selectAll(".bartwo").style("opacity", .5);
+		});
 		analize()
 		loadLegend()
 
@@ -220,7 +227,8 @@ function loadFirst(path) {
 			return i * 40 + 15;
 		}).attr("y", function(d) {
 			return 500 - d / 4
-		}).attr("fill", "blue");
+		}).attr("fill", "blue")
+		.attr("class", "barone");
 
 		analize()
 		loadLegend()
@@ -230,13 +238,23 @@ function loadFirst(path) {
 function loadLegend() {
 	legend.selectAll("*").remove();
 	legend.append("rect").attr("x", 250).attr("y", 15).attr("width", 20).attr(
-			"height", 20).attr("fill", "blue");
+			"height", 20).attr("fill", "blue").on("mouseover", function(){
+				d3.selectAll(".barone").style("opacity", 1);
+			})
+			.on("mouseout", function(){
+				d3.selectAll(".barone").style("opacity", .5);
+			});;
 
 	legend.append("text").attr("x", 380).attr("y", 22).attr("dy", ".35em")
 			.style("text-anchor", "end").text(legendOne);
 
 	legend.append("rect").attr("x", 250).attr("y", 35).attr("width", 20).attr(
-			"height", 20).attr("fill", "teal");
+			"height", 20).attr("fill", "teal").on("mouseover", function(){
+				d3.selectAll(".bartwo").style("opacity", 1);
+			})
+			.on("mouseout", function(){
+				d3.selectAll(".bartwo").style("opacity", .5);
+			});
 
 	legend.append("text").attr("x", 380).attr("y", 45).attr("dy", ".35em")
 			.style("text-anchor", "end").text(legendTwo);
@@ -305,5 +323,7 @@ function loadPie() {
 			return "smallLabel";
 
 	});
+	
+	
 
 }
