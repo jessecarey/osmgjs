@@ -119,7 +119,7 @@
 
 		var xLabels = d3.time.scale().domain(
 				[ new Date(2013, 0, 1), new Date(2013, 11, 31) ]).range(
-				[ 0, w ]);range
+				[ 0, w ]);
 		var x = d3.scale.linear().domain([ 0, data.length ]).range([ 0, w ]);
 		var y = d3.scale.linear().domain([ 0, d3.max(data) ]).range([ h, 0 ]);
 
